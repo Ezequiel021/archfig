@@ -1,6 +1,6 @@
 *
 !.gitignore
-!./hypr
-!./quickshell
-!./foot
-
+!/hypr
+!/quickshell
+!/foot
+!/fish
