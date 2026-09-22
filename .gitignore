@@ -10,5 +10,7 @@
 !/VSCodium
 !/fastfetch
 !/matugen
+
+!README.md
 !background.sh
 !starship.toml
