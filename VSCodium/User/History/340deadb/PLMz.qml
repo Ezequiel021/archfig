@@ -1,0 +1,23 @@
+import QtQuick
+import Quickshell
+import Quickshell.Io
+
+QtObject {
+    id: themeRoot
+    property var colors: []
+    
+    Process {
+        command: ["cat", "~/home/ramos/.config/quickshell/widgets/theme/Theme.json"]
+        stdout: SplitParser {
+            onRead: (data) => {
+                if (data.trim() !== "") {
+                    try {
+                        let parsed = JSON.parse(data)
+                    } catch (e) {
+                        console.log("Error parseando el JSON de color")
+                    }
+                }
+            }
+        }
+    }
+}

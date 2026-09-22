@@ -1,0 +1,36 @@
+pragma ComponentBehavior: Bound
+import QtQuick
+import Quickshell
+import Quickshell.Io
+
+Item {
+    id: windowTitleRoot
+    implicitHeight: titleText.implicitWidth
+    implicitWidth: 38
+
+    property string activeTitle: "Desktop"
+
+    Process {
+        id: mangoStream
+        command: ["sh", "-c", "mmsg -g -c"]
+        running: true
+
+        stdout: SplitParser {
+            onRead: (data) => {
+                if (data.trim() !== "") {
+                    windowTitleRoot.activeTitle = data.trim();
+                } else {
+                    windowTitleRoot.activeTitle = "Desktop";
+                }
+            }
+        }
+    }
+
+    Text {
+        id: titleText
+        anchors.centerIn: parent
+        text: windowTitleRoot.activeTitle
+        color: "#000000"
+        elide: Text.ElideRight
+    }
+}

@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\geometry{letterpaper, margin=.7in}
+
+% Edita rápido el ejercicio y la tarea
+\newcommand{\ntarea}{1}
+
+\begin{document}
+
+\pagestyle{fancy}
+\lhead{Probabilidad}
+\rhead{Tarea \ntarea}
+
+\large{Jesús Ezequiel Ramos Moreno.}
+\begin{enumerate}
+    \item[2.] Demuestre que si \(\{A_n\}\) es una colección de eventos en un mismo espacio de probabilidad todos con probabilidad 1, entonces \(\mathbb{P}(\bigcap_{n=1}^{\infty} A_n) = 1\).
+    \begin{proof}
+        Consideremos los complementos. Para cada \(n\), como \(P(A_n) = 1\), entonces
+        \[
+        P(A_n^c) = 1 - P(A_n) = 0.
+        \]
+        Por las leyes de De Morgan,
+        \[
+        {\left(\bigcap_{n = 1}^\infty A_n\right)}^c = \bigcup_{n = 1}^\infty A_n ^c.
+        \]
+        Por la propiedad de la subaditividad numerable de la medida \(P\), tenemos que
+        \[
+        P\left(\bigcup_{n = 1} ^\infty A_n ^c\right) \leq \sum_{n = 1}^{\infty}P(A_n^c) = \sum_{n=1}^{\infty}0 = 0.
+        \]
+        Como la propiedad es no negativa, entonces \(P\left(\bigcup_{n = 1} ^\infty A_n ^c\right) = 0\).
+    \end{proof}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,18 @@
+{
+    "workbench.editorAssociations": {
+        "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+        "*.qrc": "qt-core.qrcEditor"
+    },
+    "qt-qml.qmlls.useQmlImportPathEnvVar": true,
+    "qt-qml.qmlls.customExePath": "/usr/bin/qmlls6",
+    "qt-qml.doNotAskForQmllsDownload": true,
+    "qt-core.additionalQtPaths": [
+        {
+            "name": "Qt-5.15.19-linux-g++-x86_64_from_PATH",
+            "path": "/usr/bin/qmake"
+        }
+    ],
+    "editor.wordWrap": "on",
+    "editor.fontFamily": "'0xProto Nerd Font Mono', monospace"
+
+}

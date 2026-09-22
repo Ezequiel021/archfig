@@ -1,0 +1,685 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,latexsym}
+\usepackage{enumerate,comment}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{xypic}
+
+\textheight=25cm \textwidth=18cm \topmargin=-2cm \oddsidemargin=-1cm
+
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+
+\newcommand{\Co}{\mathfrak C}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\Ext}{\mathrm{ext}}
+\newcommand{\F}{\mathfrak F}
+\newcommand{\h}{\mathrm h}
+\newcommand{\Int}{\mathrm{int}}
+\newcommand{\n}{\mathfrak{n}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\US}{\mathbb{S}^2}
+\newcommand{\x}{\mathrm x}
+\newcommand{\xk}{(\x_k)_{k\in \N}}
+\newcommand{\y}{\mathrm y}
+\newcommand{\z}{\mathrm z}
+\newcommand{\Z}{\mathbb Z}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\lbil}{\left <}
+\newcommand{\rbil}{\right >}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\mTo}{\longmapsto}
+
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+{\textsc{Cálculo Diferencial e Integral III} \\
+\medskip 
+\large{Ejercicios I - 1 \\
+(El espacio euclidiano de dimensión $n$)}}
+\end{center}
+\bigskip
+
+En general, $\Omega,\Delta, \dots$ serán subconjuntos del espacio euclidiano $\R^n$.
+
+\begin{enumerate}
+
+\item 
+\begin{enumerate}[(1)]
+\item Verifica que las funciones
+\[ 
+\norm{\x}_{\max} := \max\{\abs{x_1},\ldots,\abs{x_n}\} \quad \text{y}\quad 
+\norm{\x}_1 := \abs{x_1} + \cdots + \abs{x_n} 
+\]
+satisfacen las propiedades de una norma en $\R^n$.
+
+\textbf{Solución: } Veamos que \(\norm{\x}_{\max}\) es una norma:
+    \begin{itemize}
+        \item \textbf{Positividad:} Por definición del valor absoluto, \(\abs{x_i} \geq 0\) para toda \(i \in [n]\), por lo que \(\max\{\abs{x_1}, \dots, \abs{x_n}\} \geq 0\). Así, \(\norm{\x}_{\max} \geq 0\) para toda \(\x \in \R^n\).
+        
+        Además, \(\norm{\x}_{\max} = 0\) si y solo si \(\max\{\abs{x_1}, \dots, \abs{x_n}\} = 0\), lo que ocurre si y solo si \(\abs{x_i} = 0\) para toda \(i \in [n]\), es decir, si y solo si \(\x = 0\).
+        
+        \item \textbf{Homogeneidad:} Sea \(\lambda \in \R\). Usando la propiedad del valor absoluto \(\abs{\lambda x_i} = \abs{\lambda} \abs{x_i}\), tenemos:
+        \[
+        \norm{\lambda \x}_{\max} = \max_{1 \leq i \leq n}\{\abs{\lambda x_i}\} = \max_{1 \leq i \leq n}\{\abs{\lambda} \abs{x_i}\} = \abs{\lambda} \max_{1 \leq i \leq n}\{\abs{x_i}\} = \abs{\lambda} \norm{\x}_{\max}.
+        \]
+        
+        \item \textbf{Desigualdad del triángulo:} Por definición, 
+        \[
+        \norm{\x}_{\max} + \norm{\y}_{\max} = \max_{i\in[n]}\{\abs{x_i}\} + \max_{i\in[n]}\{\abs{y_i}\}.
+        \]
+        Para cualquier \(j \leq n\), se tiene que \(\max_{i\in[n]}\{\abs{x_i}\} \geq \abs{x_j}\) y \(\max_{i\in[n]}\{\abs{y_i}\} \geq \abs{y_j}\). Entonces,
+        \[
+        \max_{i\in[n]}\{\abs{x_i}\} + \max_{i\in[n]}\{\abs{y_i}\} \geq \abs{x_j} + \abs{y_j} \geq \abs{x_j + y_j}
+        \]
+        para cualquier \(j \leq n\). Esto implica que
+        \[
+        \max_{i\in[n]}\{\abs{x_i}\} + \max_{i\in[n]}\{\abs{y_i}\} \geq \max_{i \in [n]}\{\abs{x_j + y_j}\},
+        \]
+        y por lo tanto, \(\norm{\x}_{\max} + \norm{\y}_{\max} \geq \norm{\x + \y}_{\max}\).
+    \end{itemize}
+    
+Ahora, veamos que \(\norm{\x}_1\) es una norma:
+\begin{itemize}
+    \item \textbf{Positividad:} Por definición del valor absoluto, \(\abs{x_i} \geq 0\) y ya que la suma de valores no negativos es no negativa, \(\norm{\x}_1 \geq 0\) para cualquier vector \(\x \in \R^n\).
+    
+    Además, ya que \(\sum_{i \in [n]}\abs{x_i} = 0\) si y solo si \(\abs{x_i} = 0\) para cualquier índice \(i\), se sigue que \(\norm{\x}_1 = 0\) si y solo si \(\x = 0\).
+    
+    \item \textbf{Homogeneidad:} Sea \(\lambda \in \mathbb{R}\). Por definición del producto escalar, tenemos que 
+    \[
+    \norm{\lambda \x}_1 = \sum_{i = 1}^{n}\abs{\lambda x_i} = \sum_{i = 1}^{n}\abs{\lambda}\abs{x_i} = \abs{\lambda}\sum_{i = 1}^{n}\abs{x_i} = \abs{\lambda}\norm{\x}_1.
+    \]
+    
+    \item \textbf{Desigualdad del triángulo:} Reescribimos
+    \[
+    \norm{\x}_1 + \norm{\y}_1 = \sum_{i = 1}^{n}\abs{x_i} + \sum_{i = 1}^{n}\abs{y_i}.
+    \]
+    Sumando término a término \(\abs{x_i} + \abs{y_i}\), obtenemos la expresión
+    \[
+    \sum_{i = 1}^{n}\abs{x_i} + \sum_{i = 1}^{n}\abs{y_i} = \sum_{i = 1}^{n}(\abs{x_i} + \abs{y_i}) \geq \sum_{i = 1}^{n}\abs{x_i + y_i}.
+    \]
+    Por lo tanto, 
+    \[
+    \norm{\x}_1 + \norm{\y}_1 \geq \norm{\x + \y}_1.
+    \]
+\end{itemize}
+
+\item Describe las bolas unitarias en $\R^2$ con respecto a las normas $\norm{\x}_{\max}$ y $\norm{\x}_1$. 
+\begin{itemize}
+    \item La bola unitaria es el conjunto \(B_{\max} = \{(x_1, x_2) \in \R^2 : \norm{\x}_{\max} \leq 1\}\), lo que significa que
+    \[
+    \max\{\abs{x_1}, \abs{x_2}\} \leq 1
+    \]
+    que es equivalente a
+    \[
+    -1 \leq x_1 \leq 1 \quad \text{y} \quad -1 \leq x_2 \leq 1,
+    \]
+    por lo que la bola unitaria es un cuadrado de lado 2 centrado alrededor del origen:
+    \[
+    B_{\max} = [-1, 1] \times [-1, 1].
+    \]
+    \item Para la norma \(\norm{\x}_1\), la bola unitaria se define como el conjunto \(B_1 = \{(x_1, x_2) \in \R^2 : \norm{\x}_1 \leq 1\}\). Es decir, 
+    \[
+    \abs{x_1} + \abs{x_2} \leq 1.
+    \]
+    Esto describe un rombo centrado en el origen con vértices en los puntos \((1, 0)\), \((0, 1)\), \((-1, 0)\) y \((0, -1)\).
+\end{itemize}
+\end{enumerate}
+
+\item Demuestra que se cumplen las siguientes desigualdades:
+\begin{enumerate}[(1)]
+\item $\norm{\x}_{\max}\leq \norm{\x}\leq \sqrt{n}\,\norm{\x}_{\max}$.
+\item $\frac{1}{\sqrt{n}}\norm{\x}_1\leq \norm{\x}\leq \norm{\x}_1$.
+\end{enumerate}
+
+\textbf{Solución: }
+Demostraremos cada desigualdad por separado.
+
+\begin{enumerate}[(1)]
+\item \textbf{Primera desigualdad:} $\norm{\x}_{\max}\leq \norm{\x}$.
+
+Sea $k \in \{1, \dots, n\}$ un índice tal que $\abs{x_k} = \max\{\abs{x_1}, \dots, \abs{x_n}\} = \norm{\x}_{\max}$. Entonces,
+\[
+\norm{\x}_{\max}^2 = \abs{x_k}^2 = x_k^2 \leq \sum_{i=1}^{n} x_i^2 = \norm{\x}^2.
+\]
+Tomando raíz cuadrada en ambos lados (ambas cantidades son no negativas), obtenemos
+\[
+\norm{\x}_{\max} \leq \norm{\x}.
+\]
+
+\textbf{Segunda desigualdad:} $\norm{\x}\leq \sqrt{n}\,\norm{\x}_{\max}$.
+
+Para cada $i \in \{1, \dots, n\}$, se tiene que $\abs{x_i} \leq \norm{\x}_{\max}$, por lo que $x_i^2 = \abs{x_i}^2 \leq \norm{\x}_{\max}^2$. Sumando sobre todos los índices $i$, obtenemos
+\[
+\norm{\x}^2 = \sum_{i=1}^{n} x_i^2 \leq \sum_{i=1}^{n} \norm{\x}_{\max}^2 = n\,\norm{\x}_{\max}^2.
+\]
+Nuevamente, tomando raíz cuadrada en ambos lados, concluimos que
+\[
+\norm{\x} \leq \sqrt{n}\,\norm{\x}_{\max}.
+\]
+Por lo tanto, combinando ambas desigualdades, se cumple
+\[
+\norm{\x}_{\max}\leq \norm{\x}\leq \sqrt{n}\,\norm{\x}_{\max}.
+\]
+
+\item \textbf{Primera desigualdad:} $\frac{1}{\sqrt{n}}\norm{\x}_1\leq \norm{\x}$.
+
+Esta desigualdad es una consecuencia directa de la desigualdad de Cauchy-Schwarz. Consideremos los vectores $\x = (x_1, \dots, x_n)$ y $\mathbf{1} = (1, 1, \dots, 1)$ en $\R^n$. Aplicando la desigualdad de Cauchy-Schwarz, tenemos:
+\[
+\abs{\lbil \x, \mathbf{1} \rbil} \leq \norm{\x}\,\norm{\mathbf{1}}.
+\]
+Calculamos cada término:
+\[
+\abs{\lbil \x, \mathbf{1} \rbil} = \abs{\sum_{i=1}^{n} x_i \cdot 1} = \abs{\sum_{i=1}^{n} x_i} \leq \sum_{i=1}^{n} \abs{x_i} = \norm{\x}_1.
+\]
+y
+\[
+\norm{\mathbf{1}} = \sqrt{1^2 + 1^2 + \cdots + 1^2} = \sqrt{n}.
+\]
+Por lo tanto, la desigualdad de Cauchy-Schwarz nos da
+\[
+\norm{\x}_1 = \sum_{i=1}^{n} \abs{x_i} \leq \norm{\x}\,\sqrt{n}.
+\]
+Dividiendo ambos lados entre $\sqrt{n}$ (que es positivo), obtenemos
+\[
+\frac{1}{\sqrt{n}}\norm{\x}_1 \leq \norm{\x}.
+\]
+
+\textbf{Segunda desigualdad:} $\norm{\x}\leq \norm{\x}_1$.
+
+Demostraremos esta desigualdad elevando al cuadrado ambos lados. Como ambas cantidades son no negativas, es suficiente demostrar que $\norm{\x}^2 \leq \norm{\x}_1^2$. Tenemos:
+\[
+\norm{\x}^2 = \sum_{i=1}^{n} x_i^2.
+\]
+Por otro lado,
+\[
+\norm{\x}_1^2 = \left(\sum_{i=1}^{n} \abs{x_i}\right)^2 = \sum_{i=1}^{n} \abs{x_i}^2 + 2\sum_{1 \leq i < j \leq n} \abs{x_i}\abs{x_j}.
+\]
+Observamos que $\sum_{i=1}^{n} \abs{x_i}^2 = \sum_{i=1}^{n} x_i^2 = \norm{\x}^2$ y que el término $2\sum_{1 \leq i < j \leq n} \abs{x_i}\abs{x_j}$ es no negativo (es una suma de productos de valores absolutos, todos $\geq 0$). Por lo tanto,
+\[
+\norm{\x}_1^2 = \norm{\x}^2 + 2\sum_{1 \leq i < j \leq n} \abs{x_i}\abs{x_j} \geq \norm{\x}^2.
+\]
+Tomando raíz cuadrada en ambos lados, concluimos que
+\[
+\norm{\x} \leq \norm{\x}_1.
+\]
+Por lo tanto, combinando ambas desigualdades, se cumple
+\[
+\frac{1}{\sqrt{n}}\norm{\x}_1\leq \norm{\x}\leq \norm{\x}_1.
+\]
+\end{enumerate}
+
+\item Describe el interior de
+\[ \Omega = \{ (x,y,z)\in \R^3 : 0\leq x < 1, y^2+z^2\leq 1\}. \]
+
+\textbf{Solución: }
+Analicemos las condiciones que definen a $\Omega$:
+\begin{itemize}
+    \item La condición $0 \leq x < 1$ restringe la primera coordenada.
+    \item La condición $y^2 + z^2 \leq 1$ restringe las otras dos coordenadas a un disco cerrado de radio 1 en el plano $yz$.
+\end{itemize}
+
+El conjunto $\Omega$ es como un ``cilindro sólido'' en $\R^3$, cuyo eje es el eje $x$, con radio 1, pero con tapas en $x=0$ y $x=1$. La tapa en $x=0$ está incluida (debido al signo $\leq$), mientras que la tapa en $x=1$ no está incluida (debido al signo $<$). La superficie lateral del cilindro, definida por $y^2+z^2 = 1$, sí está incluida.
+
+Para que un punto $(x,y,z) \in \Omega$ esté en el interior, debe ser posible moverse un poco en \textbf{cualquier} dirección sin salirse de $\Omega$. Esto nos lleva a las siguientes condiciones:
+
+\begin{enumerate}
+    \item \textbf{Condición sobre $x$:} 
+    \begin{itemize}
+        \item Si $x = 0$, cualquier bola centrada en el punto contendrá puntos con primera coordenada negativa (es decir, $x < 0$), los cuales no están en $\Omega$. Por lo tanto, los puntos con $x=0$ no pueden estar en el interior.
+        \item Si $0 < x < 1$, podemos elegir un $\varepsilon > 0$ lo suficientemente pequeño (por ejemplo, $\varepsilon < \min\{x, 1-x\}$) de modo que si $|x' - x| < \varepsilon$, entonces $0 < x' < 1$. Así, la condición sobre $x$ no es un obstáculo para estar en el interior.
+    \end{itemize}
+    
+    \item \textbf{Condición sobre $y,z$:}
+    \begin{itemize}
+        \item Si $y^2 + z^2 = 1$ (el punto está en la superficie lateral del cilindro), cualquier bola centrada en el punto contendrá puntos con $y'^2 + z'^2 > 1$, los cuales no están en $\Omega$. Por lo tanto, estos puntos no pueden estar en el interior.
+        \item Si $y^2 + z^2 < 1$, podemos elegir un $\varepsilon > 0$ lo suficientemente pequeño de modo que si $(y',z')$ está cerca de $(y,z)$, entonces $y'^2 + z'^2 < 1$. Así, la condición sobre $y,z$ no es un obstáculo para estar en el interior.
+    \end{itemize}
+\end{enumerate}
+
+Combinando ambas condiciones, concluimos que los puntos del interior deben cumplir estrictamente ambas desigualdades. Por lo tanto,
+\[
+\Int(\Omega) = \{ (x,y,z)\in \R^3 : 0 < x < 1, \ y^2+z^2 < 1 \}.
+\]
+
+Este conjunto es un cilindro abierto de radio 1, con eje en el eje $x$, y con tapas abiertas en $x=0$ y $x=1$.
+
+\item Encuentra la frontera de 
+\[ \Omega = \{ (x,y)\in \R^2 : x^2 - y^2 > 1 \}. \]
+
+\textbf{Solución: }
+Consideremos la función $f(x,y) = x^2 - y^2$. Esta función es continua en todo $\R^2$. El conjunto $\Omega$ está definido por la condición $f(x,y) > 1$.
+
+Primero, determinamos el interior y la cerradura. Dado que $f$ es continua, el conjunto $\Omega = f^{-1}((1, \infty))$ es abierto. Por lo tanto, $\Int(\Omega) = \Omega$. Es decir,
+\[
+\Int(\Omega) = \{ (x,y)\in \R^2 : x^2 - y^2 > 1 \}.
+\]
+
+Para encontrar la cerradura, observamos que si tomamos puntos $(x,y)$ que cumplen $x^2 - y^2 > 1$ y los acercamos a la curva $x^2 - y^2 = 1$, podemos aproximarnos tanto como queramos. Por lo tanto, la cerradura de $\Omega$ es el conjunto donde $x^2 - y^2 \geq 1$. Es decir,
+\[
+\overline{\Omega} = \{ (x,y)\in \R^2 : x^2 - y^2 \geq 1 \}.
+\]
+Esto se debe a que la adherencia de un conjunto abierto definido por una desigualdad estricta con una función continua es el conjunto definido por la desigualdad no estricta correspondiente.
+
+Ahora, determinamos la frontera. Usando la definición de frontera como $\partial \Omega = \overline{\Omega} \setminus \Int(\Omega)$, tenemos:
+\[
+\partial \Omega = \{ (x,y)\in \R^2 : x^2 - y^2 \geq 1 \} \setminus \{ (x,y)\in \R^2 : x^2 - y^2 > 1 \}.
+\]
+La diferencia entre estos dos conjuntos es precisamente el conjunto de puntos donde se cumple la igualdad. Por lo tanto,
+\[
+\partial \Omega = \{ (x,y)\in \R^2 : x^2 - y^2 = 1 \}.
+\]
+
+\item Decir si las siguientes propiedades son ciertas. Prueba tu respuesta.
+\begin{enumerate}[(1)]
+\item $\Int(\Omega\cup \Delta) = \Int(\Omega)\cup \Int(\Delta),\; \Int(\Omega\cap \Delta) = \Int(\Omega)\cap \Int(\Delta)$.
+\item $\Ext(\Omega\cup \Delta) = \Ext(\Omega)\cup \Ext(\Delta),\; \Ext(\Omega\cap \Delta) = \Ext(\Omega)\cap \Ext(\Delta)$.
+\end{enumerate}
+
+\textbf{Solución: } Analicemos cada propiedad por separado.
+
+\begin{enumerate}[(1)]
+\item \textbf{Propiedades del interior.}
+
+\textbf{Primera propiedad:} $\Int(\Omega\cup \Delta) = \Int(\Omega)\cup \Int(\Delta)$.
+
+Esta propiedad es \textbf{falsa} en general. Solo se cumple una contención.
+
+\textit{Contención verdadera:} $\Int(\Omega)\cup \Int(\Delta) \subseteq \Int(\Omega\cup \Delta)$.
+
+\textit{Demostración:} Si $\x \in \Int(\Omega)$, entonces existe $\varepsilon > 0$ tal que $B(\x, \varepsilon) \subseteq \Omega \subseteq \Omega \cup \Delta$. Por lo tanto, $\x \in \Int(\Omega \cup \Delta)$. Análogamente, si $\x \in \Int(\Delta)$, entonces $\x \in \Int(\Omega \cup \Delta)$. Así, $\Int(\Omega)\cup \Int(\Delta) \subseteq \Int(\Omega\cup \Delta)$.
+
+\textit{Contraejemplo para la otra contención:} Tomemos $\Omega = [0,1]$ y $\Delta = [1,2]$ en $\R$. Entonces $\Omega \cup \Delta = [0,2]$, y tenemos:
+\[
+\Int(\Omega \cup \Delta) = \Int([0,2]) = (0,2),
+\]
+mientras que
+\[
+\Int(\Omega) \cup \Int(\Delta) = \Int([0,1]) \cup \Int([1,2]) = (0,1) \cup (1,2).
+\]
+Observamos que $1 \in (0,2) = \Int(\Omega \cup \Delta)$, pero $1 \notin (0,1) \cup (1,2) = \Int(\Omega) \cup \Int(\Delta)$. Por lo tanto, $\Int(\Omega \cup \Delta) \not\subseteq \Int(\Omega) \cup \Int(\Delta)$, y la igualdad es falsa.
+
+\textbf{Segunda propiedad:} $\Int(\Omega\cap \Delta) = \Int(\Omega)\cap \Int(\Delta)$.
+
+Esta propiedad es \textbf{verdadera}.
+
+\textit{Demostración:} Probaremos la doble contención.
+
+($\subseteq$) Sea $\x \in \Int(\Omega \cap \Delta)$. Entonces existe $\varepsilon > 0$ tal que $B(\x, \varepsilon) \subseteq \Omega \cap \Delta$. Esto significa que $B(\x, \varepsilon) \subseteq \Omega$ y $B(\x, \varepsilon) \subseteq \Delta$. Por lo tanto, $\x \in \Int(\Omega)$ y $\x \in \Int(\Delta)$, lo que implica que $\x \in \Int(\Omega) \cap \Int(\Delta)$.
+
+($\supseteq$) Sea $\x \in \Int(\Omega) \cap \Int(\Delta)$. Entonces $\x \in \Int(\Omega)$ y $\x \in \Int(\Delta)$. Por lo tanto, existen $\varepsilon_1 > 0$ y $\varepsilon_2 > 0$ tales que $B(\x, \varepsilon_1) \subseteq \Omega$ y $B(\x, \varepsilon_2) \subseteq \Delta$. Sea $\varepsilon = \min\{\varepsilon_1, \varepsilon_2\} > 0$. Entonces $B(\x, \varepsilon) \subseteq B(\x, \varepsilon_1) \subseteq \Omega$ y $B(\x, \varepsilon) \subseteq B(\x, \varepsilon_2) \subseteq \Delta$. Por lo tanto, $B(\x, \varepsilon) \subseteq \Omega \cap \Delta$, lo que implica que $\x \in \Int(\Omega \cap \Delta)$.
+
+Así, $\Int(\Omega\cap \Delta) = \Int(\Omega)\cap \Int(\Delta)$.
+
+\item \textbf{Propiedades del exterior.}
+\textbf{Primera propiedad:} $\Ext(\Omega\cup \Delta) = \Ext(\Omega)\cup \Ext(\Delta)$.
+
+Esta propiedad es \textbf{falsa} en general.
+
+\textit{Contraejemplo:} Tomemos $\Omega = (-\infty, 0]$ y $\Delta = [0, \infty)$ en $\R$. Entonces $\Omega \cup \Delta = \R$. El exterior de $\R$ es vacío:
+\[
+\Ext(\Omega \cup \Delta) = \Ext(\R) = \Int(\R^n \setminus \R) = \Int(\emptyset) = \emptyset.
+\]
+Por otro lado,
+\[
+\Ext(\Omega) = \Ext((-\infty, 0]) = \Int((0, \infty)) = (0, \infty),
+\]
+\[
+\Ext(\Delta) = \Ext([0, \infty)) = \Int((-\infty, 0)) = (-\infty, 0).
+\]
+Entonces,
+\[
+\Ext(\Omega) \cup \Ext(\Delta) = (-\infty, 0) \cup (0, \infty) = \R \setminus \{0\} \neq \emptyset.
+\]
+Por lo tanto, $\Ext(\Omega\cup \Delta) \neq \Ext(\Omega)\cup \Ext(\Delta)$, y la igualdad es falsa.
+
+\textbf{Segunda propiedad:} $\Ext(\Omega\cap \Delta) = \Ext(\Omega)\cap \Ext(\Delta)$.
+
+Esta propiedad es \textbf{falsa} en general.
+
+\textit{Contraejemplo:} Tomemos $\Omega = (-\infty, 1)$ y $\Delta = (0, \infty)$ en $\R$. Entonces $\Omega \cap \Delta = (0, 1)$. Calculamos los exteriores:
+\[
+\Ext(\Omega \cap \Delta) = \Ext((0,1)) = \Int(\R \setminus (0,1)) = \Int((-\infty, 0] \cup [1, \infty)) = (-\infty, 0) \cup (1, \infty).
+\]
+Por otro lado,
+\[
+\Ext(\Omega) = \Ext((-\infty, 1)) = \Int([1, \infty)) = (1, \infty),
+\]
+\[
+\Ext(\Delta) = \Ext((0, \infty)) = \Int((-\infty, 0]) = (-\infty, 0).
+\]
+Entonces,
+\[
+\Ext(\Omega) \cap \Ext(\Delta) = (1, \infty) \cap (-\infty, 0) = \emptyset.
+\]
+Claramente, $\Ext(\Omega \cap \Delta) = (-\infty, 0) \cup (1, \infty) \neq \emptyset = \Ext(\Omega) \cap \Ext(\Delta)$. Por lo tanto, la igualdad es falsa.
+\end{enumerate}
+
+\item Decir si las siguientes propiedades son ciertas. Prueba tu respuesta.
+\begin{enumerate}[(1)]
+\item $\partial(\Omega\cup \Delta) = \partial \Omega\cup \partial \Delta,\; 
+\partial(\Omega\cap \Delta) = \partial \Omega\cap \partial \Delta$.
+\item Si $\Omega\subset \Delta$ entonces $\Int(\Omega)\subset \Int(\Delta),\; \Ext(\Omega)\subset \Ext(\Delta),\; \partial \Omega\subset \partial \Delta$.
+\end{enumerate}
+
+\textbf{Solución: } Analicemos cada propiedad por separado.
+
+\begin{enumerate}[(1)]
+\item \textbf{Propiedades de la frontera.}
+
+\textbf{Primera propiedad:} $\partial(\Omega\cup \Delta) = \partial \Omega\cup \partial \Delta$.
+
+Esta propiedad es \textbf{falsa} en general. Solo se cumple una contención.
+
+\textit{Contención verdadera:} $\partial \Omega \cup \partial \Delta \subseteq \partial(\Omega \cup \Delta)$.
+
+\textit{Demostración:} Sea $\x \in \partial \Omega$. Entonces toda bola abierta centrada en $\x$ contiene puntos de $\Omega$ y puntos de $\R^n \setminus \Omega$. Como $\Omega \subseteq \Omega \cup \Delta$, toda bola centrada en $\x$ contiene puntos de $\Omega \cup \Delta$. Además, como $\R^n \setminus (\Omega \cup \Delta) \subseteq \R^n \setminus \Omega$, toda bola centrada en $\x$ contiene puntos de $\R^n \setminus (\Omega \cup \Delta)$. Por lo tanto, $\x \in \partial(\Omega \cup \Delta)$. Análogamente, si $\x \in \partial \Delta$, entonces $\x \in \partial(\Omega \cup \Delta)$. Así, $\partial \Omega \cup \partial \Delta \subseteq \partial(\Omega \cup \Delta)$.
+
+\textit{Contraejemplo para la otra contención:} Tomemos $\Omega = [0,1]$ y $\Delta = [1,2]$ en $\R$. Entonces $\Omega \cup \Delta = [0,2]$. Calculamos las fronteras:
+\[
+\partial(\Omega \cup \Delta) = \partial([0,2]) = \{0, 2\},
+\]
+mientras que
+\[
+\partial \Omega \cup \partial \Delta = \partial([0,1]) \cup \partial([1,2]) = \{0, 1\} \cup \{1, 2\} = \{0, 1, 2\}.
+\]
+Observamos que $1 \in \partial \Omega \cup \partial \Delta$, pero $1 \notin \partial(\Omega \cup \Delta)$. Por lo tanto, $\partial \Omega \cup \partial \Delta \not\subseteq \partial(\Omega \cup \Delta)$, y la igualdad es falsa.
+
+\textbf{Segunda propiedad:} $\partial(\Omega\cap \Delta) = \partial \Omega\cap \partial \Delta$.
+
+Esta propiedad es \textbf{falsa} en general.
+
+\textit{Contraejemplo:} Tomemos $\Omega = [0,1]$ y $\Delta = [1,2]$ en $\R$. Entonces $\Omega \cap \Delta = \{1\}$. Calculamos las fronteras:
+\[
+\partial(\Omega \cap \Delta) = \partial(\{1\}) = \{1\},
+\]
+mientras que
+\[
+\partial \Omega \cap \partial \Delta = \partial([0,1]) \cap \partial([1,2]) = \{0, 1\} \cap \{1, 2\} = \{1\}.
+\]
+En este caso, la igualdad sí se cumple. Necesitamos otro contraejemplo.
+
+\textit{Contraejemplo mejor:} Tomemos $\Omega = [0,2]$ y $\Delta = [1,3]$ en $\R$. Entonces $\Omega \cap \Delta = [1,2]$. Calculamos las fronteras:
+\[
+\partial(\Omega \cap \Delta) = \partial([1,2]) = \{1, 2\},
+\]
+mientras que
+\[
+\partial \Omega \cap \partial \Delta = \partial([0,2]) \cap \partial([1,3]) = \{0, 2\} \cap \{1, 3\} = \emptyset.
+\]
+Claramente, $\partial(\Omega \cap \Delta) = \{1, 2\} \neq \emptyset = \partial \Omega \cap \partial \Delta$. Por lo tanto, la igualdad es falsa.
+
+\item \textbf{Propiedades de monotonía.}
+
+Supongamos que $\Omega \subset \Delta$.
+
+\textbf{Primera propiedad:} $\Int(\Omega)\subset \Int(\Delta)$.
+
+Esta propiedad es \textbf{verdadera}.
+
+\textit{Demostración:} Sea $\x \in \Int(\Omega)$. Entonces existe $\varepsilon > 0$ tal que $B(\x, \varepsilon) \subseteq \Omega$. Como $\Omega \subseteq \Delta$, se tiene que $B(\x, \varepsilon) \subseteq \Delta$. Por lo tanto, $\x \in \Int(\Delta)$. Así, $\Int(\Omega) \subseteq \Int(\Delta)$.
+
+\textbf{Segunda propiedad:} $\Ext(\Omega)\subset \Ext(\Delta)$.
+
+Esta propiedad es \textbf{falsa} en general.
+
+\textit{Contraejemplo:} Tomemos $\Omega = [0,1]$ y $\Delta = [0,2]$ en $\R$. Claramente, $\Omega \subset \Delta$. Calculamos los exteriores:
+\[
+\Ext(\Omega) = \Ext([0,1]) = \Int(\R \setminus [0,1]) = \Int((-\infty, 0) \cup (1, \infty)) = (-\infty, 0) \cup (1, \infty),
+\]
+\[
+\Ext(\Delta) = \Ext([0,2]) = \Int(\R \setminus [0,2]) = \Int((-\infty, 0) \cup (2, \infty)) = (-\infty, 0) \cup (2, \infty).
+\]
+Observamos que $1.5 \in \Ext(\Omega)$ (ya que $1.5 \in (1, \infty)$), pero $1.5 \notin \Ext(\Delta)$ (ya que $1.5 \notin (-\infty, 0) \cup (2, \infty)$). Por lo tanto, $\Ext(\Omega) \not\subseteq \Ext(\Delta)$, y la propiedad es falsa.
+
+\textbf{Tercera propiedad:} $\partial \Omega\subset \partial \Delta$.
+
+Esta propiedad es \textbf{falsa} en general.
+
+\textit{Contraejemplo:} Tomemos $\Omega = [0,1]$ y $\Delta = [0,2]$ en $\R$. Claramente, $\Omega \subset \Delta$. Calculamos las fronteras:
+\[
+\partial \Omega = \partial([0,1]) = \{0, 1\},
+\]
+\[
+\partial \Delta = \partial([0,2]) = \{0, 2\}.
+\]
+Observamos que $1 \in \partial \Omega$, pero $1 \notin \partial \Delta$. Por lo tanto, $\partial \Omega \not\subseteq \partial \Delta$, y la propiedad es falsa.
+\end{enumerate}
+
+\item Define la \emph{suma} de $\Omega$ y $\Delta$ como
+\[ \Omega + \Delta := \{ \x+\y\in \R^n : \x\in \Omega, \y\in \Delta \}. \]
+Demuestra que $\Omega + \Delta$ es abierto.
+
+\textbf{Solución: } 
+Sea $\mathbf{z} \in \Omega + \Delta$ un punto arbitrario. Por definición de la suma de conjuntos, existen $\x \in \Omega$ y $\y \in \Delta$ tales que $\mathbf{z} = \x + \y$.
+
+Como $\Omega$ es abierto y $\x \in \Omega$, existe $\varepsilon_1 > 0$ tal que
+\[
+B(\x, \varepsilon_1) \subseteq \Omega.
+\]
+Análogamente, como $\Delta$ es abierto y $\y \in \Delta$, existe $\varepsilon_2 > 0$ tal que
+\[
+B(\y, \varepsilon_2) \subseteq \Delta.
+\]
+
+Sea $\varepsilon = \min\{\varepsilon_1, \varepsilon_2\} > 0$. Demostraremos que
+\[
+B(\mathbf{z}, \varepsilon) \subseteq \Omega + \Delta.
+\]
+
+Sea $\mathbf{w} \in B(\mathbf{z}, \varepsilon)$ un punto arbitrario. Entonces $\norm{\mathbf{w} - \mathbf{z}} < \varepsilon$. Queremos expresar $\mathbf{w}$ como suma de un elemento de $\Omega$ y un elemento de $\Delta$.
+
+Definimos
+\[
+\mathbf{u} = \x + (\mathbf{w} - \mathbf{z}) = \x + (\mathbf{w} - \x - \y) = \mathbf{w} - \y.
+\]
+Observamos que
+\[
+\norm{\mathbf{u} - \x} = \norm{(\x + \mathbf{w} - \mathbf{z}) - \x} = \norm{\mathbf{w} - \mathbf{z}} < \varepsilon \leq \varepsilon_1.
+\]
+Por lo tanto, $\mathbf{u} \in B(\x, \varepsilon_1) \subseteq \Omega$.
+
+Ahora, expresamos $\mathbf{w}$ como
+\[
+\mathbf{w} = \mathbf{u} + \y.
+\]
+Como $\mathbf{u} \in \Omega$ y $\y \in \Delta$, se sigue que $\mathbf{w} \in \Omega + \Delta$.
+
+Por lo tanto, $B(\mathbf{z}, \varepsilon) \subseteq \Omega + \Delta$.
+
+Como $\mathbf{z} \in \Omega + \Delta$ era arbitrario, hemos demostrado que todo punto de $\Omega + \Delta$ tiene una bola abierta centrada en él completamente contenida en $\Omega + \Delta$. Por lo tanto,
+\[
+\Omega + \Delta \text{ es abierto.}
+\]
+
+\item Encuentra la cerradura de 
+\[ \Omega = \{ (x,y)\in \R^2 : x > y^2 \}. \]
+
+\textbf{Solución: }
+Consideremos la función $f(x,y) = x - y^2$. Esta función es continua en todo $\R^2$. El conjunto $\Omega$ está definido por la condición $f(x,y) > 0$, es decir,
+\[
+\Omega = f^{-1}((0, \infty)).
+\]
+
+\textbf{Paso 1: Determinar el interior.}
+
+Dado que $f$ es continua y $(0, \infty)$ es abierto en $\R$, el conjunto $\Omega = f^{-1}((0, \infty))$ es abierto. Por lo tanto,
+\[
+\Int(\Omega) = \Omega = \{ (x,y)\in \R^2 : x > y^2 \}.
+\]
+
+\textbf{Paso 2: Determinar la cerradura.}
+
+La cerradura de $\Omega$ se obtiene ``agregando'' los puntos límite de $\Omega$. Los puntos límite que no están en $\Omega$ son aquellos donde $x = y^2$, es decir, los puntos sobre la parábola $x = y^2$.
+
+Para justificar esto formalmente, demostremos que
+\[
+\overline{\Omega} = \{ (x,y)\in \R^2 : x \geq y^2 \}.
+\]
+
+\textit{Demostración de la contención $\overline{\Omega} \subseteq \{ (x,y)\in \R^2 : x \geq y^2 \}$:}
+
+Sea $A = \{ (x,y)\in \R^2 : x \geq y^2 \}$. Observamos que $A$ es cerrado, ya que $A = f^{-1}([0, \infty))$ y $f$ es continua. Además, $\Omega \subseteq A$, pues si $x > y^2$, entonces ciertamente $x \geq y^2$. Como $\overline{\Omega}$ es el cerrado más pequeño que contiene a $\Omega$, se sigue que
+\[
+\overline{\Omega} \subseteq A = \{ (x,y)\in \R^2 : x \geq y^2 \}.
+\]
+
+\textit{Demostración de la contención $\{ (x,y)\in \R^2 : x \geq y^2 \} \subseteq \overline{\Omega}$:}
+
+Sea $(x_0, y_0) \in A$, es decir, $x_0 \geq y_0^2$. Debemos demostrar que $(x_0, y_0) \in \overline{\Omega}$. Distinguimos dos casos:
+
+\begin{itemize}
+    \item \textbf{Caso 1:} $x_0 > y_0^2$. Entonces $(x_0, y_0) \in \Omega$, y por lo tanto $(x_0, y_0) \in \overline{\Omega}$.
+    
+    \item \textbf{Caso 2:} $x_0 = y_0^2$. Entonces $(x_0, y_0)$ está sobre la parábola. Debemos demostrar que es un punto de acumulación de $\Omega$. Para ello, construiremos una sucesión de puntos en $\Omega$ que converja a $(x_0, y_0)$.
+    
+    Para cada $k \in \N$, definimos
+    \[
+    (x_k, y_k) = \left(x_0 + \frac{1}{k}, y_0\right).
+    \]
+    Observamos que
+    \[
+    x_k = x_0 + \frac{1}{k} = y_0^2 + \frac{1}{k} > y_0^2 = y_k^2,
+    \]
+    por lo que $(x_k, y_k) \in \Omega$ para toda $k \in \N$. Además,
+    \[
+    \lim_{k \to \infty} (x_k, y_k) = \lim_{k \to \infty} \left(x_0 + \frac{1}{k}, y_0\right) = (x_0, y_0).
+    \]
+    Por lo tanto, $(x_0, y_0)$ es un punto de acumulación de $\Omega$, y así $(x_0, y_0) \in \overline{\Omega}$.
+\end{itemize}
+
+En ambos casos, $(x_0, y_0) \in \overline{\Omega}$, lo que demuestra que
+\[
+\{ (x,y)\in \R^2 : x \geq y^2 \} \subseteq \overline{\Omega}.
+\]
+
+Combinando ambas contenciones, concluimos que
+\[
+\overline{\Omega} = \{ (x,y)\in \R^2 : x \geq y^2 \}.
+\]
+
+\item Prueba que si $\Omega$ es cerrado entonces 
+$\Int(\partial \Omega)=\emptyset$.
+
+\textbf{Solución: }
+Supongamos que $\Omega$ es cerrado. Entonces $\overline{\Omega} = \Omega$, y la frontera de $\Omega$ es
+\[
+\partial \Omega = \Omega \setminus \Int(\Omega).
+\]
+
+Demostraremos que $\Int(\partial \Omega) = \emptyset$ por contradicción.
+Supongamos que $\Int(\partial \Omega) \neq \emptyset$. Entonces existe un punto $\x \in \Int(\partial \Omega)$ y un $\varepsilon > 0$ tal que
+\[
+B(\x, \varepsilon) \subseteq \partial \Omega.
+\]
+
+Como $\partial \Omega = \Omega \setminus \Int(\Omega) \subseteq \Omega$, se tiene que
+\[
+B(\x, \varepsilon) \subseteq \Omega.
+\]
+Pero esto significa que $\x$ es un punto interior de $\Omega$, es decir, $\x \in \Int(\Omega)$.
+
+Por otro lado, como $B(\x, \varepsilon) \subseteq \partial \Omega = \Omega \setminus \Int(\Omega)$, se tiene que
+\[
+B(\x, \varepsilon) \cap \Int(\Omega) = \emptyset.
+\]
+En particular, $\x \notin \Int(\Omega)$, ya que si $\x \in \Int(\Omega)$, entonces $\x \in B(\x, \varepsilon) \cap \Int(\Omega)$, lo cual contradice que dicha intersección sea vacía.
+
+Hemos llegado a una contradicción: por un lado, $\x \in \Int(\Omega)$, y por otro lado, $\x \notin \Int(\Omega)$. Por lo tanto, nuestra suposición inicial de que $\Int(\partial \Omega) \neq \emptyset$ debe ser falsa.
+
+Concluimos que
+\[
+\Int(\partial \Omega) = \emptyset.
+\]
+
+\item Supongamos que $a_1,\ldots,a_n,b_1,\ldots,b_n\in \R^n$ son tales que $a_j<b_j$ para toda $j=1,\ldots,n$. Definimos el rectángulo cerrado (abierto) por
+\[ R = [a_1,b_1]\times \cdots\times [a_n,b_n], \]
+o bien,
+\[ R = (a_1,b_1)\times \cdots\times (a_n,b_n). \]
+En cualquier caso, la \textsf{diagonal} de $R$ se define por:
+\[ \diag(R) := \norm{(b_1,\ldots,b_n) - (a_1,\ldots,a_n)}. \]
+Prueba que todo rectángulo cerrado $R$ es un subconjunto cerrado, acotado y convexo de $\R^n$. 
+\item Supongamos que $a_1,\ldots,a_n,b_1,\ldots,b_n\in \R$ son tales que $a_j<b_j$ para toda $j=1,\ldots,n$. Hemos definido el rectángulo cerrado (abierto) por
+\[ R = [a_1,b_1]\times \cdots\times [a_n,b_n], \]
+o bien,
+\[ R = (a_1,b_1)\times \cdots\times (a_n,b_n). \]
+En cualquier caso, la \textsf{diagonal} de $R$ se define por:
+\[ \diag(R) := \norm{(b_1,\ldots,b_n) - (a_1,\ldots,a_n)}. \]
+Prueba que todo rectángulo cerrado $R$ es un subconjunto cerrado, acotado y convexo de $\R^n$.
+
+\textbf{Solución: } Sea
+\[
+R = [a_1,b_1]\times \cdots\times [a_n,b_n]
+\]
+un rectángulo cerrado en $\R^n$, donde $a_j < b_j$ para toda $j = 1, \ldots, n$. Debemos demostrar tres propiedades: que $R$ es cerrado, acotado y convexo.
+
+\textbf{1. $R$ es cerrado.}
+Sea $(\x_k)_{k \in \N}$ una sucesión de puntos en $R$ que converge a un punto $\x \in \R^n$. Escribimos $\x_k = (x_{k,1}, \ldots, x_{k,n})$ y $\x = (x_1, \ldots, x_n)$. Como $\x_k \in R$, se tiene que
+\[
+a_j \leq x_{k,j} \leq b_j \quad \text{para toda } j = 1, \ldots, n \text{ y toda } k \in \N.
+\]
+La convergencia $\x_k \to \x$ en $\R^n$ implica la convergencia componente a componente, es decir, $x_{k,j} \to x_j$ para cada $j$. Tomando límites en las desigualdades anteriores y usando que los límites preservan desigualdades no estrictas, obtenemos
+\[
+a_j \leq x_j \leq b_j \quad \text{para toda } j = 1, \ldots, n.
+\]
+Por lo tanto, $\x \in R$. Esto demuestra que $R$ contiene a todos sus puntos límite, y por consiguiente, $R$ es cerrado.
+
+\textbf{2. $R$ es acotado.}
+Sea $\x = (x_1, \ldots, x_n) \in R$ un punto arbitrario. Entonces $a_j \leq x_j \leq b_j$ para toda $j$. Definimos
+\[
+c_j = \max\{\abs{a_j}, \abs{b_j}\} \geq 0.
+\]
+Entonces $\abs{x_j} \leq c_j$ para toda $j$. Usando la norma euclidiana, tenemos:
+\[
+\norm{\x}^2 = \sum_{j=1}^{n} x_j^2 = \sum_{j=1}^{n} \abs{x_j}^2 \leq \sum_{j=1}^{n} c_j^2.
+\]
+Sea $M = \sqrt{\sum_{j=1}^{n} c_j^2} > 0$. Entonces
+\[
+\norm{\x} \leq M
+\]
+para toda $\x \in R$. Por lo tanto, $R$ es acotado.
+
+Alternativamente, podemos usar la diagonal de $R$. Sea $\mathbf{a} = (a_1, \ldots, a_n)$ y $\mathbf{b} = (b_1, \ldots, b_n)$. Para cualquier $\x \in R$, se tiene que $\abs{x_j - a_j} \leq b_j - a_j$ para toda $j$. Entonces,
+\[
+\norm{\x - \mathbf{a}}^2 = \sum_{j=1}^{n} (x_j - a_j)^2 \leq \sum_{j=1}^{n} (b_j - a_j)^2 = \diag(R)^2,
+\]
+por lo que $\norm{\x - \mathbf{a}} \leq \diag(R)$. Usando la desigualdad triangular,
+\[
+\norm{\x} = \norm{(\x - \mathbf{a}) + \mathbf{a}} \leq \norm{\x - \mathbf{a}} + \norm{\mathbf{a}} \leq \diag(R) + \norm{\mathbf{a}},
+\]
+lo que también demuestra que $R$ es acotado.
+
+\textbf{3. $R$ es convexo.}
+Sean $\x = (x_1, \ldots, x_n)$ y $\y = (y_1, \ldots, y_n)$ dos puntos arbitrarios de $R$. Entonces, para toda $j = 1, \ldots, n$, se tiene:
+\[
+a_j \leq x_j \leq b_j \quad \text{y} \quad a_j \leq y_j \leq b_j.
+\]
+Sea $t \in [0,1]$ arbitrario. Definimos
+\[
+\mathbf{z} = (1-t)\x + t\y = ((1-t)x_1 + ty_1, \ldots, (1-t)x_n + ty_n).
+\]
+Para cada componente $j$, como $0 \leq t \leq 1$ y $1-t \geq 0$, tenemos:
+\[
+z_j = (1-t)x_j + ty_j \geq (1-t)a_j + ta_j = ((1-t) + t)a_j = a_j,
+\]
+y
+\[
+z_j = (1-t)x_j + ty_j \leq (1-t)b_j + tb_j = ((1-t) + t)b_j = b_j.
+\]
+Por lo tanto, $a_j \leq z_j \leq b_j$ para toda $j$, lo que implica que $\mathbf{z} \in R$.
+
+Como $\x, \y \in R$ y $t \in [0,1]$ eran arbitrarios, concluimos que $R$ es convexo.
+
+Se sigue que todo rectángulo cerrado
+\[
+R = [a_1,b_1]\times \cdots\times [a_n,b_n]
+\]
+es un subconjunto cerrado, acotado y convexo de $\R^n$.
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,2 @@
+module qs.templates
+singleton Templates 1.0 Templates.qml

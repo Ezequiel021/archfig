@@ -1,0 +1,134 @@
+{
+    "telemetry.sqmId": "",
+    "telemetry.machineId": "a265cb9e33975325b9d79037dca2a4ac3df94d3f1e5554ebffe74b2daf432136",
+    "telemetry.devDeviceId": "2f3df19b-b215-4ba2-bd21-c24423c57220",
+    "backupWorkspaces": {
+        "workspaces": [],
+        "folders": [
+            {
+                "folderUri": "file:///home/ramos/Documents/metodos-numericos"
+            }
+        ],
+        "emptyWindows": []
+    },
+    "windowControlHeight": 42,
+    "profileAssociations": {
+        "workspaces": {
+            "file:///home/ramos/.config/quickshell": "__default__profile__",
+            "file:///home/ramos/.config/hypr": "__default__profile__",
+            "file:///home/ramos/.config/mango": "__default__profile__",
+            "file:///home/ramos/Downloads/shell": "__default__profile__",
+            "file:///home/ramos/.config/fastfetch": "__default__profile__",
+            "file:///home/ramos/Documents/CALCIII": "-4ba3cf13",
+            "file:///home/ramos/Documents/Probabilidad": "-4ba3cf13",
+            "file:///home/ramos/Documents/teocom": "-4ba3cf13",
+            "file:///home/ramos/Documents/metodos-numericos": "-1ced5164"
+        },
+        "emptyWindows": {}
+    },
+    "windowsState": {
+        "lastActiveWindow": {
+            "folder": "file:///home/ramos/Documents/metodos-numericos",
+            "backupPath": "/home/ramos/.config/VSCodium/Backups/35b3bf6be3d9dc191a4a24f22dc23d23",
+            "uiState": {
+                "mode": 0,
+                "x": 16,
+                "y": 10,
+                "width": 920,
+                "height": 1056,
+                "zoomLevel": 1
+            }
+        },
+        "openedWindows": []
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#121314",
+    "windowSplash": {
+        "zoomLevel": 0,
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#bfbfbf",
+            "background": "#121314",
+            "editorBackground": "#121314",
+            "titleBarBackground": "#191a1b",
+            "titleBarBorder": "#2a2b2c",
+            "activityBarBackground": "#191a1b",
+            "activityBarBorder": "#2a2b2c",
+            "sideBarBackground": "#191a1b",
+            "sideBarBorder": "#2a2b2c",
+            "panelBackground": "#191a1b",
+            "editorGroupBorder": "rgba(255, 255, 255, 0.09)",
+            "agentsPanelBackground": "#191a1b",
+            "agentsPanelBorder": "#2a2b2c",
+            "statusBarBackground": "#191a1b",
+            "statusBarBorder": "#2a2b2c",
+            "statusBarNoFolderBackground": "#191a1b"
+        },
+        "layoutInfo": {
+            "sideBarSide": "right",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 35,
+            "activityBarWidth": 48,
+            "sideBarWidth": 243,
+            "auxiliaryBarWidth": 0,
+            "statusBarHeight": 22,
+            "windowBorder": false,
+            "modernUI": false
+        }
+    },
+    "windowSplashWorkspaceOverride": {
+        "layoutInfo": {
+            "sideBarWidth": 243,
+            "auxiliaryBarWidth": 170,
+            "workspaces": {
+                "58f98a61c48330872bdd0471ec7052ca": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "813539dd34057206241054978cc55745": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "b3562411aa480d8d21acf4b85b042451": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "a28e2a79a909fba044787fb74ba45358": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "3d2cf801fc160cc22ca49f3922bef54b": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "54b875de3998446c1df899776f11839e": {
+                    "sideBarVisible": false,
+                    "auxiliaryBarVisible": false
+                },
+                "e9cd3a32e53cb250064443f47c495726": {
+                    "sideBarVisible": false,
+                    "auxiliaryBarVisible": false
+                },
+                "5687b8972ceb0fb0154fb4165a01cbaf": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "6db1d882d3af222a3eab2bbd9a7b6ad3": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                }
+            }
+        }
+    },
+    "userDataProfiles": [
+        {
+            "location": "-4ba3cf13",
+            "name": "Latex",
+            "useDefaultFlags": {}
+        },
+        {
+            "location": "-1ced5164",
+            "name": "Python"
+        }
+    ]
+}

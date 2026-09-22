@@ -1,0 +1,10 @@
+{
+    "workbench.editorAssociations": {
+        "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+        "*.qrc": "qt-core.qrcEditor"
+    },
+    "editor.wordWrap": "on",
+    "editor.fontFamily": "'JetBrains Mono', '0xProto Nerd Font', monospace",
+    "editor.fontLigatures": true
+
+}

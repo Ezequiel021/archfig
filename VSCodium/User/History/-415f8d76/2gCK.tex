@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\geometry{letterpaper, margin=.7in}
+
+% Edita rápido el ejercicio y la tarea
+\newcommand{\ntarea}{1}
+
+\begin{document}
+
+\pagestyle{fancy}
+\lhead{Probabilidad}
+\rhead{Tarea \ntarea}
+
+\large{Jesús Ezequiel Ramos Moreno.}
+\begin{enumerate}
+    \item[2.] Demuestre que si \(\{A_n\}\) es una colección de eventos en un mismo espacio de probabilidad todos con probabilidad 1, entonces \(\mathbb{P}(\bigcap_{n=1}^{\infty} A_n) = 1\).
+    \begin{proof}
+        Consideremos los complementos. Para cada \(n\), como \(P(A_n) = 1\), entonces
+        \[
+        P(A_n^c) = 1 - P(A_n) = 0.
+        \]
+        Por las leyes de De Morgan,
+        \[
+        {\left(\bigcap_{n = 1}^\infty A_n\right)}^c = \bigcup_{n = 1}^\infty A_n ^c.
+        \]
+        Por la propiedad de la subaditividad numerable de la medida \(P\), tenemos que
+        \[
+        P\left(\bigcup_{n = 1} ^\infty A_n ^c\right) \leq \sum_{n = 1}^{\infty}P(A_n^c) = \sum_{n=1}^{\infty}0 = 0.
+        \]
+        Como la propiedad es no negativa, \(P\left(\bigcup_{n = 1} ^\infty A_n ^c\right) = 0\). Entonces 
+        \[
+        P\left(\bigcap_{i = 1}^\infty A_n\right) = 1 - P\left(\bigcup_{n = 1} ^\infty A_n ^c\right) = 1 - 0 = 1.
+        \]
+    \end{proof}
+    \item[4.] Sean \(F(x)\) y \(G(x)\) dos funciones de distribución. Determine si las siguientes funciones son de distribución.
+    \begin{enumerate}[label={(\roman*)}]
+        \item \(aF(x) + (1 - a)G(x)\), con \(0 \leq a \leq 1\)
+        \item \(F(x) + G(x)\)
+        \item \(F(x)G(x)\)
+        \item \(\frac{2G(x)}{1 + F(x)}\)
+    \end{enumerate}
+    \textbf{Solución.} Verificaremos las propiedades de una función de distribución para cada inciso.
+    \begin{enumerate}[label={(\roman*)}]
+        \item Notemos que cuando \(a\) es igual a 0 o 1, \(aF(x) + (1 - a)G(x)\) es igual a \(G(x)\) o \(F(x)\), respectivamente, por lo que es una función de distribución.
+        
+        Consideremos \(a \in (0, 1)\) y verifiquemos las propiedades de la función.
+        \begin{itemize}
+            \item Calculemos los límites al infinito: 
+            \[
+            \lim_{x \to -\infty} aF(x) + (1 - a)G(x) \quad \text{y} \lim_{x \to +\infty} aF(x) + (1 - a)G(x).
+            \]
+            Ya que \(F\) y \(G\) son funciones de distribución, su límite cuando \(x\) tiende a infinito negativo es 0, por lo que al evaluar el límite tenemos:
+            \[
+            \lim_{x \to -\infty} aF(x) + (1 - a)G(x) = a(0) + (1 - a)(0) = 0.
+            \]
+            Análogamente, cuando \(x\) tiende a infinito positivo, el límite de \(F\) y \(G\) es 1. Por lo tanto,
+            \[
+            \lim_{x \to +\infty} aF(x) + (1 - a)G(x) = a(1) + (1 - a)(1) = a + 1 - a = 1.
+            \]
+            \item Dado que \(a \geq 0\), entonces la monotonicidad del primer término \(aF(x)\) es igual a la de \(F(x)\), que es creciente por hipótesis. De forma similar, como \(a \leq 1\), entonces \((1 - a) \geq 0\), por lo que el término \((1 - a)G(x)\) es creciente también. Dado que la suma de funciones crecientes es creciente, se sigue que la función \(aF(x) + (1 - a)G(x)\) es creciente.
+            \item Ya que hemos probado que la función es creciente y su valor en sus límites es 0 y 1, se sigue que 
+            \[
+            0 \leq aF(x) + (1 - a)G(x) \leq 1.
+            \]
+        \end{itemize}
+        Como hemos verificado las propiedades, entonces la función \(aF(x) + (1 - a)G(x)\) es una función de distribución.
+        \item Veamos que \(F(x) + G(x)\) no es una función de distribución. Calculemos el límite cuando \(x\) tiende a infinito positivo. Dado que \(F\) y \(G\) son funciones de distribución, ambas convergen a 1 cuando \(x\) tiende a infinito. Evaluando el límite, obtenemos 
+    \[
+    \lim_{x \to +\infty} [F(x) + G(x)] = 1 + 1 = 2,
+    \]
+    lo cuál viola las propiedades de una función de distribución. Por lo tanto, \(F(x) + G(x)\) no es una función de distribución.
+    \item \begin{itemize}
+        \item Calculemos los límites al infinito:
+        \[
+        \lim_{x \to -\infty}F(x)G(x) \quad \text{y} \quad \lim_{x \to +\infty} F(x)G(x).
+        \]
+        Ya que \(F\) y \(G\) son funciones de distribución, su límite cuando \(x\) tiende a infinito negativo es 0, por loq eu al evaluar el límite tenemos:
+        \[
+        \lim_{x \to -\infty}F(x)G(x) = (0)(0) = 0.
+        \]
+        De igual manera, cuando \(x\) tiende a infinito positivo, el límite de \(F\) y \(G\) es 1. Entonces,
+        \[
+        \lim_{x \to +\infty}F(x)G(x) = (1)(1) = 1.
+        \]
+        \item 
+    \end{itemize}
+    \item a
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
