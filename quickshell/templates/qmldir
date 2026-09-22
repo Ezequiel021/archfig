@@ -1,0 +1,9 @@
+module qs.templates
+StyledText 1.0 StyledText.qml
+StyledRect 1.0 StyledRect.qml
+AnimatedPanel 1.0 AnimatedPanel.qml
+AnimatedPopup 1.0 AnimatedPopup.qml
+MaterialIcon 1.0 MaterialIcon.qml
+FilledSlider 1.0 FilledSlider.qml
+OverlayPanel 1.0 OverlayPanel.qml
+Elevate 1.0 Elevate.qml
